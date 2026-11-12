@@ -79,7 +79,7 @@ El repositorio incluye `Dockerfile` (compatible con Render, Railway, Azure App S
 `NODE_ENV=production`, `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` (y `DB_ENCRYPT=true` en Azure SQL).
 
 URL desplegada: https://bladesinsight-admin.onrender.com
-Video explicativo: _(pegar aquí el enlace de Loom/YouTube)_
+Video explicativo: https://youtu.be/rx0MAnPdwEw
 
 ## Estructura
 
