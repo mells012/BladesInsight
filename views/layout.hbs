@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} · BladesInsight Admin</title>
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/admin">BladesInsight <span>Admin</span></a>
+    <nav>
+      <a href="/admin/temporadas">Temporadas</a>
+      <a href="/admin/competencias">Competencias</a>
+      <a href="/admin/patinadoras">Patinadoras</a>
+      <a href="/admin/inscripciones">Inscripciones</a>
+      <a href="/admin/programas-planeados">Programas</a>
+      <a href="/admin/elementos-planeados">Elementos</a>
+    </nav>
+    <form method="post" action="/logout"><span>{{user.nombre}}</span> <button class="link">Salir</button></form>
+  </header>
+  <main>{{{body}}}</main>
+  <script src="/admin.js"></script>
+</body>
+</html>

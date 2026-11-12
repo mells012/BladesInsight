@@ -1,0 +1,7 @@
+<h1>Panel de administración</h1>
+<p class="muted">Datos maestros que alimentan el core de BladesInsight (estimador y análisis de brecha).</p>
+<div class="grid">
+  {{#each stats}}
+  <a class="card stat" href="{{href}}"><strong>{{n}}</strong><span>{{label}}</span></a>
+  {{/each}}
+</div>

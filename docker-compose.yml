@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64          # en Mac con Apple Silicon corre emulado
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${DB_PASSWORD:-Cambiar_Esta_Clave_123}
+    ports: ["1433:1433"]
+    volumes: [mssql-data:/var/opt/mssql]
+
+  app:
+    build: .
+    depends_on: [db]
+    environment:
+      DB_TYPE: mssql
+      DB_HOST: db
+      DB_USER: sa
+      DB_PASSWORD: ${DB_PASSWORD:-Cambiar_Esta_Clave_123}
+      DB_NAME: master            # cambie a bladesinsight tras crear la BD
+      NODE_ENV: development
+      JWT_SECRET: ${JWT_SECRET:-secreto-local}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@bladesinsight.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin12345!}
+    ports: ["3000:3000"]
+    restart: on-failure
+
+volumes:
+  mssql-data:

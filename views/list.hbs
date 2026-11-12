@@ -1,0 +1,24 @@
+<div class="bar">
+  <h1>{{title}}</h1>
+  <a class="btn" href="{{base}}/nuevo">+ Nuevo</a>
+</div>
+{{#if ok}}<p class="alert ok">{{ok}}</p>{{/if}}
+{{#if err}}<p class="alert err">{{err}}</p>{{/if}}
+<table>
+  <thead><tr>{{#each columns}}<th>{{label}}</th>{{/each}}<th></th></tr></thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+      {{#each cells}}<td>{{this}}</td>{{/each}}
+      <td class="actions">
+        <a href="{{../base}}/{{id}}/editar">Editar</a>
+        <form method="post" action="{{../base}}/{{id}}/eliminar" onsubmit="return confirm('¿Eliminar este registro?')">
+          <button class="link danger">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {{else}}
+    <tr><td colspan="{{columns.length}}" class="muted">Sin registros todavía.</td></tr>
+    {{/each}}
+  </tbody>
+</table>

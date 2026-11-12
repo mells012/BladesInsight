@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+{{#if summary.length}}
+<div class="alert err"><strong>Revise los datos:</strong>
+  <ul>{{#each summary}}<li>{{this}}</li>{{/each}}</ul>
+</div>
+{{/if}}
+<form class="card" method="post" action="{{action}}" novalidate>
+  {{#each fields}}
+  <div class="field {{#if error}}has-error{{/if}}">
+    {{#if (eq type "checkbox")}}
+      <label class="check"><input type="checkbox" id="{{name}}" name="{{name}}" {{#if value}}checked{{/if}}> {{label}}</label>
+    {{else}}
+      <label for="{{name}}">{{label}}{{#if required}} *{{/if}}</label>
+      {{#if (eq type "select")}}
+        <select id="{{name}}" name="{{name}}" data-selected="{{value}}"
+          {{#if dependsOn}}data-depends-on="{{dependsOn}}" data-url="{{url}}" data-param="{{param}}"{{/if}}>
+          <option value="">— Seleccione —</option>
+          {{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+      {{else}}
+        <input id="{{name}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if (eq type "number")}}min="1"{{/if}}>
+      {{/if}}
+    {{/if}}
+    {{#if hint}}<small class="muted">{{hint}}</small>{{/if}}
+    {{#if error}}<small class="error">{{error}}</small>{{/if}}
+  </div>
+  {{/each}}
+  <div class="row">
+    <button class="btn" type="submit">Guardar</button>
+    <a class="btn ghost" href="{{base}}">Cancelar</a>
+  </div>
+</form>
